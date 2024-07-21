@@ -1,0 +1,4 @@
+.env
+.react-email/
+.DS_Store
+dist

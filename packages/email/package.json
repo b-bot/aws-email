@@ -1,0 +1,29 @@
+{
+  "name": "@monokit/email",
+  "version": "0.0.19",
+  "private": true,
+  "scripts": {
+    "dev": "email dev -p 3001",
+    "export:html": "email export --outDir templates/html --pretty true",
+    "export:text": "email export --outDir templates/txt --pretty true --plainText true",
+    "email:build": "email build",
+    "build": "tsup --format esm && pnpm run export:html && pnpm run export:text",
+    "sync": "pnpm run build && node ./dist/aws/sync.mjs",
+    "delete": "node ./dist/aws/delete.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "3.614.0",
+    "@react-email/components": "0.0.21",
+    "child_process": "1.0.2",
+    "dotenv": "16.3.1",
+    "react": "18.3.1",
+    "react-email": "2.1.5",
+    "tsup": "8.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "prettier": "3.3.2",
+    "typescript": "5.4.5"
+  }
+}
