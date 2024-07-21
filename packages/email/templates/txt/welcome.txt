@@ -4,13 +4,9 @@ MonoKit
 
 Welcome to MonoKit
 
-This is a test email.
+The dynamic value passed in was: {{dynamic}}
 
 Buy the kit! https://monokit.dev
-
---------------------------------------------------------------------------------
-
-— Andrey & Byron
 
 --------------------------------------------------------------------------------
 

@@ -1,81 +1,47 @@
-# Turborepo starter
+# AWS SES Transactional Email
 
-This is an official starter Turborepo.
+This is a monorepo structure for a project that sends production-grade transactional emails using AWS SES. It will enable the uploading templates created using React Email. The project is built using Turbo, a zero-config tool for monorepos.
 
-## Using this example
+## Setup
 
-Run the following command:
+1. Add the identity of the domain you want to send emails from in AWS SES. You will also need to add the email you want to test sending an email to as a verified identity while you wait on production access. This can be requested from the dashboard in SES.
 
-```sh
-npx create-turbo@latest
+2. Create an IAM user in AWS SES with the following policy attached:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "ses:ListTemplates",
+        "ses:SendEmail",
+        "ses:SendTemplatedEmail",
+        "ses:DeleteTemplate",
+        "ses:UpdateTemplate",
+        "ses:CreateTemplate",
+        "ses:SendRawEmail",
+        "ses:GetTemplate"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
 ```
 
-## What's inside?
+3. Add the access key and secret key to the `.env` file in the root of the projects of both the `apps/web` and `packages/email` folders.
 
-This Turborepo includes the following packages/apps:
+4. `pnpm install` at the root of the project.
 
-### Apps and Packages
+5. `pnpm dev` to start the development servers in both the `apps/web` and `packages/email` folders. This will start them on port 3000 and 3001 respectively.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+6. Modify your emails according to the templates and then run `pnpm sync` to upload the templates to AWS SES.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+7. You can now navigate to your browser and send a test email to the email you verified in step 1.
 
-### Utilities
+### Resources
 
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- AWS SES Documentation: [Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html)
+- Video Guide: [YouTube](https://nextjs.org/)
