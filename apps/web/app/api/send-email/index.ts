@@ -17,7 +17,7 @@ export class EmailService {
     templateName,
   }: SendEmailProps<T>) {
     const params = {
-      Source: `MonoKit <${from}>`,
+      Source: from,
       Destination: {
         ToAddresses: to,
         BccAddresses: bcc,
