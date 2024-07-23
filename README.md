@@ -43,5 +43,6 @@ This is a monorepo structure for a project that sends production-grade transacti
 
 ### Resources
 
+- MonoKit Survey: [Google Form](https://www.youtube.com/watch?v=hCzMR6MJV28&t=506s)
 - AWS SES Documentation: [Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html)
-- Video Guide: [YouTube](https://nextjs.org/)
+- Video Guide: [YouTube](https://youtube.com/watch?v=hCzMR6MJV28)
